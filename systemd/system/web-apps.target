@@ -1,0 +1,6 @@
+[Unit]
+After=network.target
+Wants=web-apps-http.target web-apps-worker.target
+
+[Install]
+WantedBy=multi-user.target

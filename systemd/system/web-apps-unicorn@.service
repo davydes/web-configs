@@ -1,0 +1,15 @@
+[Unit]
+PartOf=web-apps-http.target
+
+[Service]
+User=deploy
+WorkingDirectory=/var/www/apps/%i/current
+Environment=RAKE_ENV=production
+ExecStart=/bin/bash -lc 'bundle exec unicorn_rails -E production -c config/unicorn.rb'
+Restart=always
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+KillMode=process
+TimeoutStopSec=5
